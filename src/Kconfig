@@ -1,6 +1,0 @@
-config CRYPTO_DEV_MTK_AES
-	tristate "HW AES Engine MT7628"
-        default n
-	help
-	  This is an HW AES Engine for the MT7628AN.
-
