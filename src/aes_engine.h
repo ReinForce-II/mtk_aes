@@ -1,7 +1,7 @@
 #ifndef __MTK_AES_ENGINE__
 #define __MTK_AES_ENGINE__
 
-#include <asm/rt2880/rt_mmap.h>
+#include "rt_mmap_7628.h"
 
 #define AES_PROCNAME		"aes_engine"
 #define AES_MODNAME		"AES Engine"

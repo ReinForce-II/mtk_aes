@@ -10,7 +10,8 @@
 #include <linux/scatterlist.h>
 #include <linux/dma-mapping.h>
 
-#include <asm/rt2880/surfboardint.h>
+#include "surfboardint_7628.h"
+#include "rt_mmap_7628.h"
 
 #include "mcrypto_aes_api.h"
 #include "aes_engine.h"
