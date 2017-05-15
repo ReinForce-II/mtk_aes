@@ -173,7 +173,7 @@ next_desc_rx:
 		AES_Entry.aes_rx_front_idx, AES_Entry.aes_rx_rear_idx);
 
 #if defined (CONFIG_CRYPTO_DEV_MTK_AES_INT)
-	INIT_COMPLETION(AES_Entry.op_complete);
+	reinit_completion(&AES_Entry.op_complete);
 #endif
 
 	wmb();
@@ -454,7 +454,7 @@ static int __init AesEngineInit(void)
 #if defined (CONFIG_CRYPTO_DEV_MTK_AES_INT)
 	init_completion(&AES_Entry.op_complete);
 
-	err = request_irq(SURFBOARDINT_AESENGINE, AesEngineIrqHandler, IRQF_DISABLED, "aes_engine", NULL);
+	err = request_irq(SURFBOARDINT_AESENGINE, AesEngineIrqHandler, 0x0 , "aes_engine", NULL);
 	if (err) {
 		printk("%s: IRQ %d is not free!\n", AES_MODNAME, SURFBOARDINT_AESENGINE);
 		aes_engine_desc_free();

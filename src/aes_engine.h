@@ -3,6 +3,8 @@
 
 #include "rt_mmap_7628.h"
 
+#define CONFIG_CRYPTO_DEV_MTK_AES_INT
+
 #define AES_PROCNAME		"aes_engine"
 #define AES_MODNAME		"AES Engine"
 

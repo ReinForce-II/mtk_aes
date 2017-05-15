@@ -13,21 +13,44 @@ PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
 
+define Package/mtk_aes/Default
+  SECTION:=kernel
+  CATEGORY:=Kernel modules
+  SUBMENU:=Proprietary Ralink Modules
+endef
+
 define KernelPackage/mtk_aes
-  SUBMENU:=Other modules
-  TITLE:=Driver for Mediatek MT7628AN AES Engine
-  AUTOLOAD:=$(call Autoload,81,mtk_aes)
+  $(call Package/mtk_aes/Default)
+  SECTION:=kernel
+  TITLE:=Kernel driver for HW AES ENGINE MT7628
+  KCONFIG:= 
   FILES:=$(PKG_BUILD_DIR)/mtk_aes.ko
-  KCONFIG:=
+  MENU:=1
+endef
+
+define KernelPackage/mtk_aes/description
+ Kernel module to enable HW Crypto Engine.
+endef
+
+define Package/kmod-mtk_aes/config
+   menu "Configuration"
+
+   config  CRYPTO_DEV_MTK_AES_INT
+	bool "Use interrupts (vs Polling)"
+        depends on PACKAGE_kmod-mtk_aes
+	default y
+
+   endmenu
+
 endef
 
 define Build/Compile
-	$(MAKE) -C "$(LINUX_DIR)" \
-		CROSS_COMPILE="$(TARGET_CROSS)" \
-		ARCH="$(LINUX_KARCH)" \
-		SUBDIRS="$(PKG_BUILD_DIR)" \
-		EXTRA_CFLAGS="$(BUILDFLAGS)" \
-		modules
+	+$(MAKE) $(PKG_JOBS) -C "$(LINUX_DIR)" \
+        CROSS_COMPILE="$(TARGET_CROSS)" \
+        ARCH="$(LINUX_KARCH)" \
+        SUBDIRS="$(PKG_BUILD_DIR)" \
+        EXTRA_CFLAGS="$(BUILDFLAGS)" \
+        modules
 endef
 
 $(eval $(call KernelPackage,mtk_aes))
