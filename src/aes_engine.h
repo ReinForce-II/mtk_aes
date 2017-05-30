@@ -1,7 +1,7 @@
 #ifndef __MTK_AES_ENGINE__
 #define __MTK_AES_ENGINE__
 
-#include "rt_mmap_7628.h"
+#include "./include/rt_mmap_7628.h"
 
 /* #define CONFIG_CRYPTO_DEV_MTK_AES_INT */
 

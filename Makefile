@@ -16,7 +16,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/mtk_aes/Default
   SECTION:=kernel
   CATEGORY:=Kernel modules
-  SUBMENU:=Proprietary Ralink Modules
+  SUBMENU:=Cryptographic API modules
 endef
 
 define KernelPackage/mtk_aes

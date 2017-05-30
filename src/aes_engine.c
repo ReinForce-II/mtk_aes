@@ -10,8 +10,8 @@
 #include <linux/scatterlist.h>
 #include <linux/dma-mapping.h>
 
-#include "surfboardint_7628.h"
-#include "rt_mmap_7628.h"
+#include "./include/surfboardint_7628.h"
+#include "./include/rt_mmap_7628.h"
 
 #include "mcrypto_aes_api.h"
 #include "aes_engine.h"
